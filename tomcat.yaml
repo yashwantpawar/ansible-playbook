@@ -1,0 +1,72 @@
+---
+- name: Install Apache Tomcat
+  hosts: localhost
+  become: yes
+  vars:
+    ansible_ssh_user: ubuntu  
+
+  tasks:
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+
+    - name: Install Java (OpenJDK)
+      apt:
+        name: openjdk-8-jdk
+        state: present
+
+    - name: Download Apache Tomcat tarball
+      get_url:
+        url: "https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.97/bin/apache-tomcat-8.5.97.tar.gz"
+        dest: "/tmp/apache-tomcat-8.5.97.tar.gz"
+        
+
+    - name: Extract Apache Tomcat
+      ansible.builtin.unarchive:
+        src: "/tmp/apache-tomcat-8.5.97.tar.gz"
+        dest: "/opt"
+        remote_src: no
+
+    - name: Set ownership and permissions
+      file:
+        path: "/opt/apache-tomcat-8.5.97"
+        state: directory
+        recurse: yes
+        owner: "{{ ansible_ssh_user }}"
+        group: "{{ ansible_ssh_user }}"
+        mode: 0755
+  
+    - name: Ensure the directory exists
+      ansible.builtin.file:
+        path: /etc/systemd/system
+        state: directory
+        mode: '0755'
+
+    - name: Create tomcat.service file
+      ansible.builtin.copy:
+        content: |
+          [Unit]
+          Description=Apache Tomcat
+          After=network.target
+
+          [Service]
+          Type=forking
+          ExecStart=/opt/apache-tomcat-8.5.97/bin/startup.sh
+          ExecStop=/opt/apache-tomcat-8.5.97/bin/shutdown.sh
+          User=ubuntu
+          Group=ubuntu
+
+          [Install]
+          WantedBy=default.target
+        dest: /etc/systemd/system/tomcat.service          
+
+    - name: Reload systemd configuration
+      ansible.builtin.systemd:
+        daemon_reload: yes      
+
+    - name: Start Tomcat service
+      ansible.builtin.service:
+        name: tomcat
+        state: started
+        enabled: yes
+
