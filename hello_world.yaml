@@ -9,9 +9,13 @@
         msg: "Hello, World!"
 
     - name: Display Ansible User
-      ansible.builtin.debug:
-        var: ansible_user
+      ansible.builtin.command: whoami
+      register: whoami_result
 
+    - name: Display Result
+      ansible.builtin.debug:
+        var: whoami_result.stdout
+        
     # - name: Create Directory
     #   ansible.builtin.file:
     #     path: /home/ubuntu/directory
