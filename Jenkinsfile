@@ -8,6 +8,13 @@ pipeline {
             }
         }
 
+        stage('Execute playbook') {
+            steps {
+                ansiblePlaybook disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'hello_world.yaml', vaultTmpPath: ''
+            }
+        }
+
+
         // Add more stages and steps as needed
     }
 
