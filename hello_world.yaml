@@ -15,25 +15,25 @@
     - name: Display Result
       ansible.builtin.debug:
         var: whoami_result.stdout
-        
-    # - name: Create Directory
-    #   ansible.builtin.file:
-    #     path: /home/ubuntu/directory
-    #     state: directory
-    #     mode: 0755  # Set the desired permissions for the directory
-    #   register: create_directory_result
 
-    # - name: Display Directory Creation Result
-    #   ansible.builtin.debug:
-    #     var: create_directory_result
+    - name: Create Directory
+      ansible.builtin.file:
+        path: /home/ubuntu/directory
+        state: directory
+        mode: 0755  # Set the desired permissions for the directory
+      register: create_directory_result
 
-    # - name: Create File Inside the Directory
-    #   ansible.builtin.file:
-    #     path: /home/ubuntu/your_file.txt
-    #     state: touch  # Create an empty file
-    #     mode: 0644  # Set the desired permissions for the file
-    #   register: create_file_result
+    - name: Display Directory Creation Result
+      ansible.builtin.debug:
+        var: create_directory_result
 
-    # - name: Display File Creation Result
-    #   ansible.builtin.debug:
-    #     var: create_file_result
+    - name: Create File Inside the Directory
+      ansible.builtin.file:
+        path: /home/ubuntu/your_file.txt
+        state: touch  # Create an empty file
+        mode: 0644  # Set the desired permissions for the file
+      register: create_file_result
+
+    - name: Display File Creation Result
+      ansible.builtin.debug:
+        var: create_file_result
