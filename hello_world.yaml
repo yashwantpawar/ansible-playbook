@@ -1,7 +1,7 @@
 ---
 - name: Print Hello World
   hosts: localhost
-  # become: true  # You may not need elevated privileges for this task
+  become: true  # You may not need elevated privileges for this task
 
   tasks:
     - name: Print Hello World
