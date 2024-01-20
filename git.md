@@ -1,4 +1,4 @@
-<!-- git rebase -->
+# git rebase
 You're on a feature branch named feature-branch.
 Meanwhile, changes have been made to the main branch.
 Here are the steps to perform a rebase:
@@ -14,7 +14,7 @@ git rebase main
 
 This will apply each commit from your feature-branch one by one on top of the latest commit in the main branch.
 
-<!-- git merge -->
+# git merge
 
 Checkout the Main Branch:
 git checkout main
