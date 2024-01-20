@@ -39,6 +39,24 @@ list remote branches:
 ```
 git branch -r
 ```
+### create branch in git: 
+
+create new local branch
+```
+git branch branch_name
+```
+Switch to the new branch
+```
+git checkout branch_name
+```
+create a new branch named branch_name and switch to it
+```
+git checkout -b branch_name
+```
+push the local branch to a remote repository and create a remote branch with the same name
+```
+git push origin branch_name
+```
 
 ### delete branch in git: 
 
