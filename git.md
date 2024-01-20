@@ -38,7 +38,7 @@ list remote branches:
 git branch -r
 ```
 
-delete branch in git: 
+### delete branch in git: 
 
 To delete a local branch in Git, you can use the following command: 
 ```
