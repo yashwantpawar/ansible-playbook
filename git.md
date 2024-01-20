@@ -93,7 +93,7 @@ Instead, use git revert to create a new commit that undoes the changes introduce
 git revert <commit-hash>
 ```
 
-Replace <commit-hash> with the hash of the commit you want to delete. This command creates a new commit that undoes the changes introduced by the specified commit.
+Replace commit-hash with the hash of the commit you want to delete. This command creates a new commit that undoes the changes introduced by the specified commit.
 
 ### Force Push (If Necessary):
 After using git reset --hard or git revert, if you made changes to your local branch, you might need to force-push your changes to the remote repository. Be cautious with force pushes, especially on shared branches, as it rewrites history.
@@ -102,4 +102,4 @@ After using git reset --hard or git revert, if you made changes to your local br
 git push origin <branch-name> --force
 ```
 
-Replace <branch-name> with the name of your branch.
+Replace branch-name with the name of your branch.
