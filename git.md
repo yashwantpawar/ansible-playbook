@@ -28,6 +28,8 @@ git merge feature-branch
 
 # git commands
 
+### list branches in git: 
+
 list local branches: 
 ```
 git branch
