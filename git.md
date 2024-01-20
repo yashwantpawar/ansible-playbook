@@ -26,4 +26,19 @@ git pull origin main
 3. Merge the Feature Branch into Main:
 git merge feature-branch
 
+# git commands
+
+list local branches: git branch
+
+list local branches: git branch -r
+
+delete branch in git: 
+
+To delete a local branch in Git, you can use the following command: git branch -d branch_name
+
+If the branch has unmerged changes, Git will prevent you from deleting it unless you force the deletion using -D: git branch -D branch_name
+
+To delete a remote branch, you can use the git push command with the --delete option: git push origin --delete branch_name
+
+
 
