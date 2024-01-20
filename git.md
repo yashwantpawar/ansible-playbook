@@ -29,9 +29,9 @@ git merge feature-branch
 # git commands
 
 list local branches: 
----
+```
 git branch
----
+```
 
 list local branches: 
 ---
