@@ -75,4 +75,31 @@ To delete a remote branch, you can use the git push command with the --delete op
 git push origin --delete branch_name
 ```
 
+### Deleting the Last Commit (Not Pushed Yet):
+If the commit you want to delete is the latest commit and hasn't been pushed to the remote repository, you can use the git reset command. This command will remove the last commit and leave the changes in your working directory.
 
+```
+git reset --hard HEAD^
+```
+
+This command moves the HEAD pointer and the branch pointer back one commit (^ means the previous commit). The --hard option discards the changes introduced by the last commit.
+
+### Deleting a Commit (Already Pushed):
+If the commit has been pushed to a remote repository, it's not recommended to use git reset because it modifies history, and force-pushing can disrupt collaboration.
+
+Instead, use git revert to create a new commit that undoes the changes introduced by the commit you want to delete:
+
+```
+git revert <commit-hash>
+```
+
+Replace <commit-hash> with the hash of the commit you want to delete. This command creates a new commit that undoes the changes introduced by the specified commit.
+
+### Force Push (If Necessary):
+After using git reset --hard or git revert, if you made changes to your local branch, you might need to force-push your changes to the remote repository. Be cautious with force pushes, especially on shared branches, as it rewrites history.
+
+```
+git push origin <branch-name> --force
+```
+
+Replace <branch-name> with the name of your branch.
