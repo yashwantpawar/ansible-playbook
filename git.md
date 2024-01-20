@@ -23,14 +23,20 @@ This will apply each commit from your feature-branch one by one on top of the la
 # git merge
 
 1. Checkout the Main Branch:
+```
 git checkout main
+```
 
 2. Pull the Latest Changes from the Remote Main Branch:
 It's a good practice to ensure that you have the latest changes from the remote main branch before merging your feature branch:
+```
 git pull origin main
+```
 
 3. Merge the Feature Branch into Main:
+```
 git merge feature-branch
+```
 
 # git commands
 
