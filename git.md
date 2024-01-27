@@ -115,3 +115,19 @@ git push origin <branch-name> --force
 ```
 
 Replace branch-name with the name of your branch.
+
+### git cherry-pick
+Find the Commit to Cherry-Pick: First, identify the commit you want to apply to your current branch. You can find the commit hash using git log.
+```
+git log
+```
+Switch to the Target Branch: Make sure you are on the branch where you want to apply the changes.
+```
+git checkout target_branch
+```
+Cherry-Pick the Commit: Use the git cherry-pick command followed by the commit hash you want to apply.
+```
+git cherry-pick <commit_hash>
+```
+This applies the changes from the specified commit to your current branch.
+
