@@ -131,3 +131,38 @@ git cherry-pick <commit_hash>
 ```
 This applies the changes from the specified commit to your current branch.
 
+
+### git squash
+Git squash is a technique used to combine multiple commits into a single commit. This is often done to create a cleaner, more concise commit history, especially before merging changes into a main or master branch. Squashing commits is helpful for making the commit history more readable and easier to understand.
+
+Here's an example of how to use git squash:
+
+Suppose you have the following commit history on a feature branch:
+```
+* commit A: Implement feature X
+* commit B: Fix bug in feature X
+* commit C: Refactor code in feature X
+```
+If you want to squash these three commits into a single commit, you can follow these steps:
+
+1. Start an interactive rebase:
+```
+git rebase -i HEAD~<number-of-commits>
+```
+2. Mark commits for squash:
+Change the word "pick" to "squash" (or just "s") for the commits you want to squash. Your rebase file might look like this:
+```
+pick A Implement feature X
+squash B Fix bug in feature X
+squash C Refactor code in feature X
+```
+Save and close the file.
+
+3. Edit the commit message:
+Another window will open, allowing you to edit the commit message for the squashed commit. You can keep the existing messages or create a new one. Save and close the file.
+
+4. Force-push the changes:
+Since the commit history has been rewritten, you'll need to force-push the changes to update the remote branch:
+```
+git push origin <branch-name> --force
+```
